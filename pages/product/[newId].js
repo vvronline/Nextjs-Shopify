@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Grid, Image, List, Input, Header } from 'semantic-ui-react';
+import { Grid, Image, List, Input, Header, Icon } from 'semantic-ui-react';
 import { client } from '../../utils/shopify';
 
 const { Row, Column } = Grid;
 export default function ProductPage({ product }) {
   const [image, setImage] = useState(product.images[0]);
   const [quantity, setQuantity] = useState(0);
+  // Cart
   const addToCart = async () => {
     const storage = window.localStorage;
     let checkoutId = storage.getItem('checkoutId');
@@ -46,11 +47,15 @@ export default function ProductPage({ product }) {
           <Header>
             <h2>{product.title}</h2>
           </Header>
-          <Header> Price : {product.variants[0].price}</Header>
+          <h3>
+            Price : <Icon name="rupee" size="small" />
+            {product.variants[0].price}
+          </h3>
           <Header> Size : {product.variants[0].title}</Header>
           <Header> Quantity : {quantity}</Header>
           <Header>Descscription </Header> <p>{product.description}</p>
           <Input
+            style={{ width: 70 }}
             action={{
               color: 'yellow',
               labelPosition: 'left',
@@ -62,7 +67,7 @@ export default function ProductPage({ product }) {
             onChange={(e, { value }) => setQuantity(Number(value))}
             type="number"
             actionPosition="left"
-            placeholder="Quantity"
+            placeholder="Qty"
             defaultValue="0"
           />
         </Column>

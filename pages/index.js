@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { client } from '../utils/shopify';
 
 import Link from 'next/link';
-import { Card, Header, Image } from 'semantic-ui-react';
+import { Card, Header, Image, Button, Icon } from 'semantic-ui-react';
 import Carousal from '../components/Carousal';
 
 export default function Home({ products }) {
@@ -31,7 +31,17 @@ export default function Home({ products }) {
                 <Card>
                   <Image src={product.images[0].src} alt={product.title} />
                   <Card.Content>
-                    <Header as="h3">{product.title}</Header>
+                    <Header floated="right">
+                      <Button animated="fade">
+                        <Button.Content visible>Buy Now</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name="rupee" />
+                          {product.variants[0].price}
+                        </Button.Content>
+                      </Button>
+                    </Header>
+
+                    <Header floated="left">{product.title}</Header>
                   </Card.Content>
                 </Card>
               </Link>

@@ -14,6 +14,7 @@ import {
   Sidebar,
   Visibility,
   Segment,
+  Input,
   Icon,
 } from 'semantic-ui-react';
 
@@ -47,16 +48,22 @@ export default function Navbar() {
             <Link href="/contact">
               <Menu.Item>Contact</Menu.Item>
             </Link>
+            <Menu.Item position="right">
+              {' '}
+              <Input inverted placeholder="Search..." icon="search" />
+            </Menu.Item>
 
             <Menu.Item position="right">
               <Button
                 onClick={() => {
                   const storage = window.localStorage;
                   const cart = JSON.parse(storage.getItem('cart'));
+                  // console.log('cart', cart);
                   Router.replace(cart.webUrl);
                 }}
               >
-                <Icon name="shopping cart"></Icon>Cart
+                <Icon name="shopping cart"></Icon>
+                Cart
               </Button>
             </Menu.Item>
             <Menu.Item>
