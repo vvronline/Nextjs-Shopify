@@ -22,8 +22,9 @@ export default function Home({ products }) {
       </>
       <Card.Group itemsPerRow={3}>
         {products.map((product) => {
-          console.log(products);
+          // console.log(products);
           product.newId = product.id.slice(-13);
+          console.log("id", product.newId)
 
           return (
             <>

@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import ProductPage from '../pages/product/[newId]';
+import { client } from '../utils/shopify';
+import { Dropdown, Menu, Select } from 'semantic-ui-react'
 
 import {
   Button,
   Container,
   Header,
-  Menu,
   Image,
   Sidebar,
   Visibility,
@@ -18,8 +19,12 @@ import {
   Icon,
 } from 'semantic-ui-react';
 
-export default function Navbar() {
+export default function Navbar({ collections }) {
   const [fixed, setFixed] = useState(false);
+  const [value, setValue] = useState([])
+
+
+
 
   return (
     <Visibility once={false}>
@@ -38,20 +43,23 @@ export default function Navbar() {
           <Container>
             <Link href="/">
               <Menu.Item>
-                <h3>Classy Store</h3>
+                <h2>Classy Store</h2>
               </Menu.Item>
             </Link>
-            <Link href="/about">
-              <Menu.Item>About Us</Menu.Item>
+            <Link href="/CollectionMen" key={1}>
+              <Menu.Item>
+                <h4>Men</h4>
+              </Menu.Item>
             </Link>
-
-            <Link href="/contact">
-              <Menu.Item>Contact</Menu.Item>
+            <Link href="/CollectionWomen">
+              <Menu.Item>
+                <h4>Women</h4>
+              </Menu.Item>
             </Link>
-            <Menu.Item position="right">
+            {/* <Menu.Item position="right">
               {' '}
               <Input inverted placeholder="Search..." icon="search" />
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item position="right">
               <Button
@@ -76,3 +84,7 @@ export default function Navbar() {
     </Visibility>
   );
 }
+
+
+
+
