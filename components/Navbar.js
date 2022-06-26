@@ -46,6 +46,7 @@ export default function Navbar({ collections }) {
                 <h2>Classy Store</h2>
               </Menu.Item>
             </Link>
+
             <Link href="/CollectionMen" key={1}>
               <Menu.Item>
                 <h4>Men</h4>
@@ -56,10 +57,11 @@ export default function Navbar({ collections }) {
                 <h4>Women</h4>
               </Menu.Item>
             </Link>
-            {/* <Menu.Item position="right">
+
+            <Menu.Item position="right">
               {' '}
               <Input inverted placeholder="Search..." icon="search" />
-            </Menu.Item> */}
+            </Menu.Item>
 
             <Menu.Item position="right">
               <Button

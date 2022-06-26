@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 
 export default function Collection({ products }, { key }) {
-    // console.log("prod", products)
+    console.log("prod", products)
     const name = products[1].title
     const collection = products[1].products.map(item => { return item })
     console.log("collection", collection)
