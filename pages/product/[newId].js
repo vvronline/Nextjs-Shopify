@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import { Grid, Image, List, Input, Header, Icon, Button } from 'semantic-ui-react';
+import {
+  Grid,
+  Image,
+  List,
+  Input,
+  Header,
+  Icon,
+  Button,
+} from 'semantic-ui-react';
 import { client } from '../../utils/shopify';
-import { Rating } from 'semantic-ui-react'
+import { Rating } from 'semantic-ui-react';
 
 const { Row, Column } = Grid;
 export default function ProductPage({ product }) {
   const [image, setImage] = useState(product.images[0]);
   const [quantity, setQuantity] = useState(0);
-  const [text, setText] = useState("")
-  const [review, setReview] = useState([])
+  const [text, setText] = useState('');
+  const [review, setReview] = useState([]);
   // Cart
   const addToCart = async () => {
     const storage = window.localStorage;
@@ -28,10 +36,8 @@ export default function ProductPage({ product }) {
   };
   console.log(product);
   const AddReview = () => {
-    <p> {setReview([...text, review])}</p>
-
-
-  }
+    <p> {setReview([...text, review])}</p>;
+  };
   return (
     <Grid container centered style={{ marginTop: 20 }}>
       <Row columns={2}>
@@ -62,9 +68,7 @@ export default function ProductPage({ product }) {
           </h3>
           <Header> Size : {product.variants[0].title}</Header>
           <Header> Quantity : {quantity}</Header>
-
           <Header>Descscription </Header> <p>{product.description}</p>
-
           <Input
             style={{ width: 70 }}
             action={{
@@ -81,33 +85,29 @@ export default function ProductPage({ product }) {
             placeholder="Qty"
             defaultValue="0"
           />
-
-
-
           <Row style={{ marginTop: 50 }}>
-
             <h3>Rating & Reviews</h3>
-            <Rating icon='star' defaultRating={0} maxRating={5} />
+            <Rating icon="star" defaultRating={0} maxRating={5} />
             <br></br>
             <br></br>
             <p>{review}</p>
             <br></br>
-            <Input focus placeholder='Review...' onChange={(e) => setText(e.target.value)} /><Button onClick={AddReview}>Add Review</Button>
-
+            <Input
+              focus
+              placeholder="Review..."
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Button onClick={AddReview}>Add Review</Button>
           </Row>
-
-
         </Column>
-
       </Row>
-
     </Grid>
   );
 }
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps() {
   // Fetch data from external API
-  console.log(query);
+
   const newquery = 'gid://shopify/Product/' + query.newId;
   console.log(newquery);
   const product = await client.product.fetch(newquery);

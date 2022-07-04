@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import ProductPage from '../pages/product/[newId]';
 import { client } from '../utils/shopify';
-import { Dropdown, Menu, Select } from 'semantic-ui-react'
+import { Dropdown, Menu, Select } from 'semantic-ui-react';
 
 import {
   Button,
@@ -21,10 +21,7 @@ import {
 
 export default function Navbar({ collections }) {
   const [fixed, setFixed] = useState(false);
-  const [value, setValue] = useState([])
-
-
-
+  const [value, setValue] = useState([]);
 
   return (
     <Visibility once={false}>
@@ -86,7 +83,3 @@ export default function Navbar({ collections }) {
     </Visibility>
   );
 }
-
-
-
-

@@ -1,30 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import Link from 'next/link';
-import Router from 'next/router'
+import Router from 'next/router';
 import Carousal from '../components/Carousal';
 import YouTube from 'react-youtube';
-import { Rating } from 'semantic-ui-react'
-
+import { Rating } from 'semantic-ui-react';
 
 import { client } from '../utils/shopify';
 import BrandInfo from '../components/BrandInfo';
 
 import { Card, Image, Header, Icon } from 'semantic-ui-react';
 import Footer from '../components/Footer';
-
-
-
-
-
+import Reviews from '../components/Reviews';
 
 export default function Home({ products }) {
-  console.log("first", products)
-  const name = products[2].title
-  const collection = products[2].products.map(item => { return item })
-  console.log("collection", collection)
+  console.log('first', products);
+  const name = products[2].title;
+  const collection = products[2].products.map((item) => {
+    return item;
+  });
+  console.log('collection', collection);
   const opts = {
-
     height: '490',
     width: 900,
     playerVars: {
@@ -34,26 +30,21 @@ export default function Home({ products }) {
   };
 
   return (
-    <div style={{ margin: 20 }} >
-
-
+    <div style={{ margin: 20 }}>
       <Carousal />
       <BrandInfo />
       <div style={{ margin: 40 }}>
-
         <h2> {name}</h2>
         <Card.Group itemsPerRow={4}>
+          {collection.map((e) => {
+            const newId = e.id.slice(-13);
 
-          {collection.map(e => {
-
-            const newId = e.id.slice(-13)
-            console.log("newid", e)
+            console.log('newid', e);
 
             return (
               <>
-
                 <Link href={`/product/${newId}`}>
-                  <Card >
+                  <Card>
                     <Image src={e.images[0].src} alt={e.title} />
                     <Card.Content itemsPerRow={4}>
                       <Header floated="left">{e.title}</Header>
@@ -64,39 +55,39 @@ export default function Home({ products }) {
                           {e.variants[0].price}
                         </Button.Content>
                       </Button>
-
                     </Card.Content>
-
                   </Card>
                 </Link>
-
               </>
-            )
+            );
           })}
         </Card.Group>
-
-
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: -30 }}> <Button color='blue' onClick={() => Router.push("./AllProducts")}>Show All Products</Button></div>
+      <div
+        style={{ display: 'flex', justifyContent: 'center', marginTop: -30 }}
+      >
+        {' '}
+        <Button color="blue" onClick={() => Router.push('./AllProducts')}>
+          View All
+        </Button>
+      </div>
 
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        margin: 50
-
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          margin: 50,
+        }}
+      >
         <YouTube videoId="GtDPjlUToKU" opts={opts} />
       </div>
-      <Footer />
     </div>
   );
 }
 
-
-
 export async function getServerSideProps() {
   // Fetch data from external API
-  const products = await client.collection.fetchAllWithProducts()
+  const products = await client.collection.fetchAllWithProducts();
 
   // Pass data to the page via props
 
