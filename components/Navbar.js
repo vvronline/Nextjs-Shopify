@@ -21,7 +21,11 @@ import {
 
 export default function Navbar({ collections }) {
   const [fixed, setFixed] = useState(false);
-  const [value, setValue] = useState([]);
+
+  const options = [
+    { key: 1, text: 'Men', value: 1, href: '/CollectionMen' },
+    { key: 2, text: 'Women', value: 2, href: '/CollectionWomen' },
+  ];
 
   return (
     <Visibility once={false}>
@@ -40,28 +44,16 @@ export default function Navbar({ collections }) {
           <Container>
             <Link href="/">
               <Menu.Item>
-                <h2>Classy Store</h2>
+                <h3>Classy Store</h3>
               </Menu.Item>
             </Link>
 
-            <Link href="/CollectionMen" key={1}>
-              <Menu.Item>
-                <h4>Men</h4>
-              </Menu.Item>
-            </Link>
-            <Link href="/CollectionWomen">
-              <Menu.Item>
-                <h4>Women</h4>
-              </Menu.Item>
-            </Link>
-
-            <Menu.Item position="right">
-              {' '}
-              <Input inverted placeholder="Search..." icon="search" />
+            <Menu.Item>
+              <Dropdown text="Collections" options={options} simple />
             </Menu.Item>
-
             <Menu.Item position="right">
               <Button
+                color="black"
                 onClick={() => {
                   const storage = window.localStorage;
                   const cart = JSON.parse(storage.getItem('cart'));
@@ -72,10 +64,6 @@ export default function Navbar({ collections }) {
                 <Icon name="shopping cart"></Icon>
                 Cart
               </Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Icon name="user circle" size="large" />
-              Login
             </Menu.Item>
           </Container>
         </Menu>

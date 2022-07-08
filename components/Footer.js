@@ -7,9 +7,10 @@ export default function Footer() {
         boxShadow: ' 0 0 4px  grey',
         marginTop: 20,
         padding: 10,
+        backgroundColor: 'black',
       }}
     >
-      <div style={{ margin: 40 }}>
+      <div style={{ margin: 40, color: 'white' }}>
         Contact <br />
         Email :
         <a href="mailto:askclassystore@gmail.com"> askclassystore@gmail.com</a>
@@ -21,7 +22,14 @@ export default function Footer() {
           <a>Privacy Policy</a>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', margin: 20 }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          margin: 20,
+          color: 'white',
+        }}
+      >
         © 2022. Classy Store Powered by Shopify
       </div>
     </div>

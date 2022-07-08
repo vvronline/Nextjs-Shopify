@@ -4,14 +4,9 @@ import Link from 'next/link';
 import Router from 'next/router';
 import Carousal from '../components/Carousal';
 import YouTube from 'react-youtube';
-import { Rating } from 'semantic-ui-react';
-
 import { client } from '../utils/shopify';
 import BrandInfo from '../components/BrandInfo';
-
 import { Card, Image, Header, Icon } from 'semantic-ui-react';
-import Footer from '../components/Footer';
-import Reviews from '../components/Reviews';
 
 export default function Home({ products }) {
   console.log('first', products);
@@ -34,7 +29,7 @@ export default function Home({ products }) {
       <Carousal />
       <BrandInfo />
       <div style={{ margin: 40 }}>
-        <h2> {name}</h2>
+        <h2 style={{ textAlign: 'center', margin: '50px' }}> {name}</h2>
         <Card.Group itemsPerRow={4}>
           {collection.map((e) => {
             const newId = e.id.slice(-13);
@@ -63,9 +58,7 @@ export default function Home({ products }) {
           })}
         </Card.Group>
       </div>
-      <div
-        style={{ display: 'flex', justifyContent: 'center', marginTop: -30 }}
-      >
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         {' '}
         <Button color="blue" onClick={() => Router.push('./AllProducts')}>
           View All

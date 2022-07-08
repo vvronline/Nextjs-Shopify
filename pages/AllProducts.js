@@ -4,6 +4,8 @@ import { client } from '../utils/shopify';
 
 import Link from 'next/link';
 import { Card, Header, Image, Button, Icon } from 'semantic-ui-react';
+import Carousel from '../components/Carousal';
+import Filter from '../components/Filter';
 
 export default function Landing({ products }) {
   return (
@@ -18,36 +20,52 @@ export default function Landing({ products }) {
       </Head>
 
       <></>
-      <Card.Group itemsPerRow={3} height={300}>
-        {products.map((product) => {
-          // console.log(products);
-          product.newId = product.id.slice(-13);
-          // console.log("id", product.newId)
 
-          return (
-            <>
-              <Link key={product.id} href={`/product/${product.newId}`}>
-                <Card>
-                  <Image src={product.images[0].src} alt={product.title} />
-                  <Card.Content>
-                    <Header floated="right">
-                      <Button animated="fade">
-                        <Button.Content visible>Buy Now</Button.Content>
-                        <Button.Content hidden>
-                          <Icon name="rupee" />
-                          {product.variants[0].price}
-                        </Button.Content>
-                      </Button>
-                    </Header>
+      <Carousel />
+      <div
+        style={{
+          margin: 30,
+          float: 'left',
+          boxShadow: ' 0 0 4px  grey',
+          width: 180,
 
-                    <Header floated="left">{product.title}</Header>
-                  </Card.Content>
-                </Card>
-              </Link>
-            </>
-          );
-        })}
-      </Card.Group>
+          padding: 20,
+        }}
+      >
+        <Filter />
+      </div>
+      <div style={{ margin: 50 }}>
+        <Card.Group itemsPerRow={3} height={300}>
+          {products.map((product) => {
+            // console.log(products);
+            product.newId = product.id.slice(-13);
+            // console.log("id", product.newId)
+
+            return (
+              <>
+                <Link key={product.id} href={`/product/${product.newId}`}>
+                  <Card>
+                    <Image src={product.images[0].src} alt={product.title} />
+                    <Card.Content>
+                      <Header floated="right">
+                        <Button animated="fade">
+                          <Button.Content visible>Buy Now</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name="rupee" />
+                            {product.variants[0].price}
+                          </Button.Content>
+                        </Button>
+                      </Header>
+
+                      <Header floated="left">{product.title}</Header>
+                    </Card.Content>
+                  </Card>
+                </Link>
+              </>
+            );
+          })}
+        </Card.Group>
+      </div>
     </div>
   );
 }
