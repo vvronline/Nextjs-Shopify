@@ -1,24 +1,24 @@
 import React from 'react';
-import { Card, Image, Header, Button, Icon } from 'semantic-ui-react';
-import { client } from '../utils/shopify';
+import { Card, Image, Header, Icon, Button } from 'semantic-ui-react';
+import { client } from '../../../utils/shopify';
 import Link from 'next/link';
-import Carousal from '../components/Carousal';
 
-export default function Collection({ products }, { key }) {
-  const name = products[1].title;
-  const collection = products[1].products.map((item) => {
+export default function Collection({ products }) {
+  const name = products[3].title;
+  console.log(products, 'products');
+
+  const collection = products[3].products.map((item) => {
     return item;
   });
 
   return (
     <div style={{ margin: 30, padding: 30 }}>
       <h2 style={{ textAlign: 'center' }}> {name} Collections</h2>
-      <Carousal />
 
       <Card.Group itemsPerRow={3}>
         {collection.map((e) => {
           const newId = e.id.slice(-13);
-          console.log('newid', e);
+          // console.log('newid', newId);
 
           return (
             <>
@@ -26,7 +26,7 @@ export default function Collection({ products }, { key }) {
               <Link href={`/product/${newId}`}>
                 <Card>
                   <Image src={e.images[0].src} alt={e.title} />
-                  <Card.Content itemsPerRow={4}>
+                  <Card.Content>
                     <Header floated="left">{e.title}</Header>
                     <Button animated="fade" floated="right">
                       <Button.Content visible>Buy Now</Button.Content>
@@ -47,6 +47,7 @@ export default function Collection({ products }, { key }) {
 }
 
 export async function getServerSideProps() {
+  // console.log('qry', query);
   // Fetch data from external API
   const products = await client.collection.fetchAllWithProducts();
 

@@ -2,23 +2,23 @@ import React from 'react';
 import { Card, Image, Header, Icon, Button } from 'semantic-ui-react';
 import { client } from '../utils/shopify';
 import Link from 'next/link';
+import Carousal from '../components/Carousal';
 
-export default function Collection({ products }, { key }) {
-  console.log('prod', products);
-
+export default function Collection({ products }) {
   const name = products[0].title;
+
   const collection = products[0].products.map((item) => {
     return item;
   });
-  console.log('collection', collection);
 
   return (
-    <>
+    <div style={{ margin: 30, padding: 30 }}>
       <h2 style={{ textAlign: 'center' }}> {name} Collections</h2>
+      <Carousal />
       <Card.Group itemsPerRow={3}>
         {collection.map((e) => {
           const newId = e.id.slice(-13);
-          console.log('newid', newId);
+          // console.log('newid', newId);
 
           return (
             <>
@@ -42,12 +42,12 @@ export default function Collection({ products }, { key }) {
           );
         })}
       </Card.Group>
-    </>
+    </div>
   );
 }
 
-export async function getServerSideProps({ query }) {
-  console.log('qry', query);
+export async function getServerSideProps() {
+  // console.log('qry', query);
   // Fetch data from external API
   const products = await client.collection.fetchAllWithProducts();
 

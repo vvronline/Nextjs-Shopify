@@ -11,7 +11,7 @@ export default function Landing({ products }) {
   return (
     <div>
       <>
-        <br />{' '}
+        <br />
       </>
       <Head>
         <title>Classy Store</title>

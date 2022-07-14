@@ -17,8 +17,10 @@ export default function ProductPage({ product }) {
   const [quantity, setQuantity] = useState(0);
   const [text, setText] = useState('');
   const [review, setReview] = useState([]);
-  console.log('review', review);
-  // Cart
+  // console.log('review', review);
+
+  // Add to Cart section
+
   const addToCart = async () => {
     const storage = window.localStorage;
     let checkoutId = storage.getItem('checkoutId');
@@ -35,10 +37,13 @@ export default function ProductPage({ product }) {
     ]);
     storage.setItem('cart', JSON.stringify(cart));
   };
-  console.log(product);
+
+  //Product Rating & Review
+
   const AddReview = () => {
     <p> {setReview([...review, text])}</p>;
   };
+
   return (
     <Grid container centered style={{ marginTop: 20 }}>
       <Row columns={2}>
@@ -115,7 +120,7 @@ export async function getServerSideProps({ query }) {
   // Fetch data from external API
 
   const newquery = 'gid://shopify/Product/' + query.newId;
-  console.log(newquery);
+  // console.log(newquery);
   const product = await client.product.fetch(newquery);
 
   // Pass data to the page via props
