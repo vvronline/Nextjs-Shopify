@@ -1,8 +1,8 @@
-import React from 'react';
-import { Card, Image, Header, Icon, Button } from 'semantic-ui-react';
-import { client } from '../utils/shopify';
-import Link from 'next/link';
-import Carousal from '../components/Carousal';
+import React from "react";
+import { Card, Image, Header, Icon, Button } from "semantic-ui-react";
+import { client } from "../utils/shopify";
+import Link from "next/link";
+import Carousal from "../components/Carousal";
 
 export default function Collection({ products }) {
   const name = products[0].title;
@@ -10,10 +10,11 @@ export default function Collection({ products }) {
   const collection = products[0].products.map((item) => {
     return item;
   });
-
+  console.log("AboutUs1", products);
+  console.log("AboutUs", products[0]);
   return (
     <div style={{ margin: 30, padding: 30 }}>
-      <h2 style={{ textAlign: 'center' }}> {name} Collections</h2>
+      <h2 style={{ textAlign: "center" }}> {name} Collections</h2>
       <Carousal />
       <Card.Group itemsPerRow={3}>
         {collection.map((e) => {

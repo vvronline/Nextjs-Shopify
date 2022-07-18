@@ -6,6 +6,7 @@ import Router from "next/router";
 import ProductPage from "../pages/product/[newId]";
 import { client } from "../utils/shopify";
 import { Dropdown, Menu, Search, Select } from "semantic-ui-react";
+import AboutUs from "./AboutUs";
 
 import {
   Button,
@@ -40,14 +41,15 @@ export default function Navbar({ collections }) {
   ];
 
   const about = [
-    { key: 1, text: "About Us", value: 1, href: "#" },
-    { key: 2, text: "FAQs", value: 2, href: "#" },
+    { key: 1, text: "About Us", value: 1, href: "/about" },
+    { key: 2, text: "FAQs", value: 2, href: "/faq" },
   ];
 
   const searchProduct = (e) => {
     setText(e.target.value);
   };
 
+  console.log("abcd", client);
   return (
     <Visibility once={false}>
       <Segment
