@@ -1,12 +1,11 @@
-import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Router from "next/router";
-import ProductPage from "../pages/product/[newId]";
-import { client } from "../utils/shopify";
-import { Dropdown, Menu, Search, Select } from "semantic-ui-react";
-import AboutUs from "./AboutUs";
+import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
+
+import { client } from '../utils/shopify';
+import { Dropdown, Menu, Search, Select } from 'semantic-ui-react';
 
 import {
   Button,
@@ -18,51 +17,51 @@ import {
   Segment,
   Input,
   Icon,
-} from "semantic-ui-react";
+} from 'semantic-ui-react';
 
 export default function Navbar({ collections }) {
   const [fixed, setFixed] = useState(false);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const options = [
-    { key: 1, text: "Topwear", value: 1, href: "#" },
-    { key: 2, text: "Bottomwear", value: 2, href: "#" },
-    { key: 3, text: "Footwear", value: 3, href: "#" },
+    { key: 1, text: 'Topwear', value: 1, href: '#' },
+    { key: 2, text: 'Bottomwear', value: 2, href: '#' },
+    { key: 3, text: 'Footwear', value: 3, href: '#' },
   ];
 
   const footwear = [
-    { key: 1, text: "Shoes", value: 1, href: "/categories/footwear/Shoes" },
+    { key: 1, text: 'Shoes', value: 1, href: '#' },
     {
       key: 2,
-      text: "Sandals & Flipflops",
+      text: 'Sandals & Flipflops',
       value: 2,
-      href: "/categories/footwear/Sandals",
+      href: '/categories/footwear/Sandals',
     },
   ];
 
   const about = [
-    { key: 1, text: "About Us", value: 1, href: "/about" },
-    { key: 2, text: "FAQs", value: 2, href: "/faq" },
+    { key: 1, text: 'About Us', value: 1, href: 'AboutUs' },
+    { key: 2, text: 'FAQs', value: 2, href: '/faq' },
   ];
 
   const searchProduct = (e) => {
     setText(e.target.value);
   };
 
-  console.log("abcd", client);
+  console.log('abcd', client);
   return (
     <Visibility once={false}>
       <Segment
         inverted
         textAlign="center"
-        style={{ padding: "1em 2em", minHeight: 50 }}
+        style={{ padding: '1em 2em', minHeight: 50 }}
       >
         <Menu
-          fixed={fixed ? "top" : null}
+          fixed={fixed ? 'top' : null}
           inverted={!fixed}
           pointing={!fixed}
           secondary={!fixed}
-          size={"medium"}
+          size={'medium'}
         >
           <Container>
             <Link href="/">
@@ -177,7 +176,7 @@ export default function Navbar({ collections }) {
                 color="black"
                 onClick={() => {
                   const storage = window.localStorage;
-                  const cart = JSON.parse(storage.getItem("cart"));
+                  const cart = JSON.parse(storage.getItem('cart'));
                   // console.log('cart', cart);
                   Router.replace(cart.webUrl);
                 }}
