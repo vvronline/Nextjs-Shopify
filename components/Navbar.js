@@ -76,24 +76,36 @@ export default function Navbar({ collections }) {
                   <Dropdown.Item>
                     <Dropdown text="Topwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Shirts" />
-                        <Dropdown.Item text="T-Shirts" />
+                        <Link href="/MenShirts">
+                          <Dropdown.Item text="Shirts" />
+                        </Link>
+                        <Link href="/MenTshirts">
+                          <Dropdown.Item text="T-Shirts" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Dropdown text="Bottomwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Jeans" />
-                        <Dropdown.Item text="Trousers" />
+                        <Link href="/MenJeans">
+                          <Dropdown.Item text="Jeans" />
+                        </Link>
+                        <Link href="/MenTrousers">
+                          <Dropdown.Item text="Trousers" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Dropdown text="Footwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Shoes" />
-                        <Dropdown.Item text="Slips" />
+                        <Link href="/MenShoes">
+                          <Dropdown.Item text="Shoes" />
+                        </Link>
+                        <Link href="MenSlips">
+                          <Dropdown.Item text="Slips" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
@@ -106,24 +118,36 @@ export default function Navbar({ collections }) {
                   <Dropdown.Item>
                     <Dropdown text="Topwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Shirts" />
-                        <Dropdown.Item text="T-Shirts" />
+                        <Link href="/WomenShirts">
+                          <Dropdown.Item text="Shirts" />
+                        </Link>
+                        <Link href="/WomenTshirts">
+                          <Dropdown.Item text="T-Shirts" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Dropdown text="Bottomwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Jeans" />
-                        <Dropdown.Item text="Skirts" />
+                        <Link href="/WomenJeans">
+                          <Dropdown.Item text="Jeans" />
+                        </Link>
+                        <Link href="/WomenSkirts">
+                          <Dropdown.Item text="Skirts" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Dropdown text="Footwear">
                       <Dropdown.Menu>
-                        <Dropdown.Item text="Shoes" />
-                        <Dropdown.Item text="Sandals" />
+                        <Link href="/WomenShoes">
+                          <Dropdown.Item text="Shoes" />
+                        </Link>
+                        <Link href="/WomenSandals">
+                          <Dropdown.Item text="Sandals" />
+                        </Link>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
@@ -132,31 +156,17 @@ export default function Navbar({ collections }) {
             </Menu.Item>
 
             <Menu.Item>
-              <Dropdown text="Kids" pointing>
+              <Dropdown text="Kids">
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Dropdown text="Topwear">
-                      <Dropdown.Menu>
-                        <Dropdown.Item text="Boy" />
-                        <Dropdown.Item text="Girl" />
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <Link href="/GirlKid">
+                      <Dropdown text="Girl" />
+                    </Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Dropdown text="Bottomwear">
-                      <Dropdown.Menu>
-                        <Dropdown.Item text="Boy" />
-                        <Dropdown.Item text="Girl" />
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown text="Footwear">
-                      <Dropdown.Menu>
-                        <Dropdown.Item text="Boy" />
-                        <Dropdown.Item text="Girl" />
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <Link href="/BoyKid">
+                      <Dropdown text="Boy" />
+                    </Link>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
