@@ -10,6 +10,7 @@ export default function BoyKid({ products }, { key }) {
     return item;
   });
   console.log("AboutUs1", products);
+  console.log("collection", collection);
   return (
     <div style={{ margin: 30, padding: 30 }}>
       <h2 style={{ textAlign: "center" }}> {name} Collections</h2>
@@ -25,7 +26,11 @@ export default function BoyKid({ products }, { key }) {
               <></>
               <Link href={`/product/${newId}`}>
                 <Card>
-                  <Image src={e.images[0].src} alt={e.title} />
+                  <Image
+                    style={{ height: "447px", width: "425px" }}
+                    src={e.images[0].src}
+                    alt={e.title}
+                  />
                   <Card.Content itemsPerRow={4}>
                     <Header floated="left">{e.title}</Header>
                     <Button animated="fade" floated="right">

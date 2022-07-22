@@ -1,0 +1,16 @@
+.logInBtn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.logInBtn:disabled {
+  opacity: 0.5;
+}

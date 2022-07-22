@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+button:disabled {
+  opacity: 0.5;
+}

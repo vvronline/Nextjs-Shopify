@@ -22,22 +22,12 @@ import {
 export default function Navbar({ collections }) {
   const [fixed, setFixed] = useState(false);
   const [text, setText] = useState("");
-
-  const options = [
-    { key: 1, text: "Topwear", value: 1, href: "#" },
-    { key: 2, text: "Bottomwear", value: 2, href: "#" },
-    { key: 3, text: "Footwear", value: 3, href: "#" },
-  ];
-
-  const footwear = [
-    { key: 1, text: "Shoes", value: 1, href: "#" },
-    {
-      key: 2,
-      text: "Sandals & Flipflops",
-      value: 2,
-      href: "/categories/footwear/Sandals",
-    },
-  ];
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const data = localStorage.getItem("logInStatus");
+    const storeItem = JSON.parse(data);
+    setUserName(storeItem && storeItem.name);
+  });
 
   const about = [
     { key: 1, text: "About Us", value: 1, href: "about" },
@@ -182,6 +172,16 @@ export default function Navbar({ collections }) {
               />
             </Menu.Item> */}
             <Menu.Item position="right">
+              <Link href="/LogIn">
+                <Icon
+                  style={{ marginRight: "80px", cursor: "pointer" }}
+                  name="user"
+                >
+                  <span style={{ paddingLeft: "10px", whiteSpace: "nowrap" }}>
+                    {userName}
+                  </span>
+                </Icon>
+              </Link>
               <Button
                 color="black"
                 onClick={() => {

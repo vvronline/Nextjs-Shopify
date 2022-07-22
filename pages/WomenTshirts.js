@@ -25,7 +25,11 @@ export default function WomenTshirts({ products }, { key }) {
               <></>
               <Link href={`/product/${newId}`}>
                 <Card>
-                  <Image src={e.images[0].src} alt={e.title} />
+                  <Image
+                    style={{ height: "447px", width: "448px" }}
+                    src={e.images[0].src}
+                    alt={e.title}
+                  />
                   <Card.Content itemsPerRow={4}>
                     <Header floated="left">{e.title}</Header>
                     <Button animated="fade" floated="right">
